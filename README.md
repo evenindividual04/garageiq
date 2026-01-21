@@ -1,4 +1,4 @@
-# GarageIQ 🔧🤖
+# GarageIQ
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![LangGraph](https://img.shields.io/badge/Agents-LangGraph-orange)
@@ -8,6 +8,8 @@
 
 > **AI-Powered Automotive Diagnostic System**  
 > Identifies vehicle faults from vague, multilingual voice complaints using a reflective multi-agent workflow.
+
+### [▶️ Try Live Demo](https://garageiq-bjm8r8vqppwfuhmhda6xje.streamlit.app/)
 
 ---
 
