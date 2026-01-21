@@ -44,7 +44,7 @@ class AudioTranscriber:
             
             transcription = self.client.audio.transcriptions.create(
                 file=(filename, audio_bytes),
-                model="distil-whisper-large-v3-en",
+                model="whisper-large-v3",  # Updated from deprecated distil-whisper
                 response_format="json",
                 language="en",  # Hint english, but model supports multi
                 temperature=0.0

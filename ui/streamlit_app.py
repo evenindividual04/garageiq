@@ -2,16 +2,25 @@
 GarageIQ — Premium Demo UI
 Enhanced UI/UX with sample inputs, animated results, and polished design.
 """
-import streamlit as st
-import json
 import sys
+import json
 import time
 from pathlib import Path
 from datetime import datetime
 
+# CRITICAL: Load .env BEFORE importing anything from automotive_intent
+# Otherwise config.py will read empty env vars
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).parent.parent / ".env")
+
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
+# Force config to reload from environment
+import os
+os.environ.setdefault("GROQ_API_KEY", os.getenv("GROQ_API_KEY", ""))
+
+import streamlit as st
 from automotive_intent.core.schemas import ClassificationRequest
 from automotive_intent.pipeline import create_pipeline
 from automotive_intent.services.entities import get_entity_extractor
@@ -315,7 +324,7 @@ def main():
                 st.metric("Total", len(st.session_state.history))
             with col2:
                 confirmed = sum(1 for h in st.session_state.history if h["status"] == "CONFIRMED")
-                st.metric("✅", confirmed)
+                st.metric("Confirmed", confirmed)
         
         if st.button("🗑️ Clear History", use_container_width=True):
             st.session_state.history = []
@@ -324,7 +333,7 @@ def main():
         st.markdown("")
         
         for entry in st.session_state.history[:6]:
-            status_emoji = {"CONFIRMED": "✅", "AMBIGUOUS": "⚠️", "OUT_OF_SCOPE": "🚫"}.get(entry["status"], "❓")
+            status_emoji = {"CONFIRMED": "●", "AMBIGUOUS": "○", "OUT_OF_SCOPE": "—"}.get(entry["status"], "?")
             mode_icon = "⚡" if entry.get("mode") == "fast" else "🧠"
             with st.expander(f"{status_emoji} {entry['text'][:30]}...", expanded=False):
                 st.caption(f"{mode_icon} {entry['response_time_ms']}ms • 🌐 {entry['language'].upper()}")
@@ -336,7 +345,7 @@ def main():
     # Main content
     st.markdown("""
     <div class="main-header">
-        <h1 class="main-title">🔧 GarageIQ</h1>
+        <h1 class="main-title">GarageIQ</h1>
         <p class="subtitle">Multilingual Service Complaint Classification • <span class="subtitle-highlight">Hindi • English • Hinglish</span></p>
     </div>
     """, unsafe_allow_html=True)
@@ -345,7 +354,7 @@ def main():
     col_input, col_result = st.columns([1, 1], gap="large")
     
     with col_input:
-        st.markdown("### 📝 Enter Complaint")
+        st.markdown("### Enter Complaint")
         
         # Text input
         # Text input with Voice option
@@ -372,21 +381,23 @@ def main():
             )
         
         # Transcribe if audio recorded
-        if audio_bytes:
+        if audio_bytes and audio_bytes != st.session_state.get("last_audio"):
+            st.session_state.last_audio = audio_bytes  # Prevent re-processing same audio
             try:
                 transcriber = get_transcriber()
-                with st.spinner("🎙️ Transcribing..."):
+                with st.spinner("Transcribing..."):
                     transcribed_text = transcriber.transcribe(audio_bytes)
                     if transcribed_text:
                         st.session_state.transcribed_input = transcribed_text
-                        st.success(f"✅ Transcribed: {transcribed_text[:50]}...")
+                        st.session_state.sample_input = ""  # Clear any sample
+                        st.rerun()  # Rerun to populate text area
                     else:
                         st.warning("⚠️ Could not transcribe audio. Check your GROQ_API_KEY.")
             except Exception as e:
                 st.error(f"❌ Transcription error: {str(e)}")
 
         # Get default value from session state
-        default_text = st.session_state.transcribed_input
+        default_text = st.session_state.sample_input or st.session_state.transcribed_input
         
         with col_txt:
             input_text = st.text_area(
@@ -394,13 +405,13 @@ def main():
                 value=default_text,
                 placeholder="Describe your vehicle problem... (or tap mic to speak)\n\nExamples:\n• My car won't start\n• Gadi garam ho rahi hai\n• Scooty on nahi ho rahi",
                 height=140,
-                label_visibility="collapsed",
-                key="complaint_input"
+                label_visibility="collapsed"
             )
         
-        # Clear transcribed input after it's been used
-        if input_text != st.session_state.transcribed_input:
+        # Update session state if user manually edits
+        if input_text and input_text != default_text:
             st.session_state.transcribed_input = ""
+            st.session_state.sample_input = ""
         
         # Language detection badge
         if input_text.strip():
@@ -412,11 +423,11 @@ def main():
         st.markdown("")
         col_btn, _ = st.columns([1, 2])
         with col_btn:
-            classify_btn = st.button("🔍 Analyze", use_container_width=True)
+            classify_btn = st.button("Analyze", use_container_width=True)
         
         # Sample inputs
         st.markdown("---")
-        st.markdown("##### 🧪 Try Sample Inputs")
+        st.markdown("##### Sample Inputs")
         
         sample_cols = st.columns(3)
         for i, sample in enumerate(SAMPLE_INPUTS):
@@ -433,7 +444,7 @@ def main():
             st.session_state.sample_input = ""  # Clear after use
     
     with col_result:
-        st.markdown("### 📊 Analysis Result")
+        st.markdown("### Analysis Result")
         
         if classify_btn and input_text.strip():
             if st.session_state.pipeline is None:
@@ -445,14 +456,14 @@ def main():
             
             # Fun loading messages to make wait feel shorter
             loading_tips = [
-                "💡 Did you know? Regular oil changes extend engine life by 30%",
-                "🔧 Pro tip: Check tire pressure monthly for better mileage",
-                "🚗 Fun fact: The average car has over 30,000 parts",
-                "💡 AC problems? 90% are refrigerant or compressor issues",
-                "🔧 Squeaky brakes? Usually worn pads - replace them early!",
-                "🚗 CNG/LPG kits should be serviced every 10,000 km",
-                "💡 Two-wheeler chains need lubrication every 500 km",
-                "🔧 Battery life in India: 2-3 years due to heat",
+                "Tip: Regular oil changes extend engine life by 30%",
+                "Tip: Check tire pressure monthly for better mileage",
+                "Analyzing vehicle systems...",
+                "Processing diagnostic data...",
+                "Searching knowledge base...",
+                "Matching with historical cases...",
+                "Generating recommendations...",
+                "Finalizing diagnosis...",
             ]
             
             # Engaging progress display
@@ -493,7 +504,7 @@ def main():
             
             try:
                 if use_advanced:
-                    update_progress(1, "🔍 Detecting language...", 0.1)
+                    update_progress(1, "Detecting language...", 0.1)
                     time.sleep(0.15)
                     
                     update_progress(2, "📋 Extracting entities...", 0.2)
@@ -508,7 +519,7 @@ def main():
                     orchestrator = get_orchestrator()
                     response = orchestrator.process_message(ChatRequest(message=input_text.strip()))
                     
-                    update_progress(5, "✅ Generating diagnosis...", 0.95)
+                    update_progress(5, "Generating diagnosis...", 0.95)
                     
                     result_dict = {
                         "classification_status": "CONFIRMED" if response.confidence >= 0.7 else "AMBIGUOUS",
@@ -518,7 +529,7 @@ def main():
                     }
                     ticket = None
                 else:
-                    update_progress(1, "🔍 Analyzing input...", 0.2)
+                    update_progress(1, "Analyzing input...", 0.2)
                     time.sleep(0.1)
                     
                     update_progress(2, "🧠 LLM classification...", 0.5)
@@ -526,7 +537,7 @@ def main():
                     ticket = st.session_state.pipeline.process(request)
                     result_dict = json.loads(ticket.model_dump_json())
                     
-                    update_progress(3, "✅ Complete!", 1.0)
+                    update_progress(3, "Complete", 1.0)
                 
                 progress_placeholder.empty()
                 tip_placeholder.empty()
@@ -565,7 +576,7 @@ def main():
                     try:
                         pdf_bytes = get_report_generator().generate_job_card(ticket)
                         st.download_button(
-                            label="📄 Job Card",
+                            label="Download Job Card",
                             data=pdf_bytes,
                             file_name=f"job_card_{ticket.request_id[:8]}.pdf",
                             mime="application/pdf",
@@ -609,7 +620,7 @@ def main():
                 if ticket and ticket.triage:
                     st.markdown("")
                     severity_color = {"CRITICAL": "#ef4444", "HIGH": "#f59e0b", "MEDIUM": "#eab308", "LOW": "#22c55e"}.get(ticket.triage.severity, "#94a3b8")
-                    st.markdown(f'<div class="info-box">💡 <strong style="color: {severity_color}">{ticket.triage.severity}</strong> • {ticket.triage.suggested_action}</div>', unsafe_allow_html=True)
+                    st.markdown(f'<div class="info-box"><strong style="color: {severity_color}">{ticket.triage.severity}</strong> • {ticket.triage.suggested_action}</div>', unsafe_allow_html=True)
             
             # Entity extraction
             extractor = get_entity_extractor()
@@ -618,9 +629,9 @@ def main():
                 st.markdown("---")
                 st.markdown("**🔎 Extracted Entities**")
                 if entities["vehicle"].make:
-                    st.markdown(f"🚗 {entities['vehicle'].make} {entities['vehicle'].model or ''} {entities['vehicle'].year or ''}")
+                    st.markdown(f"{entities['vehicle'].make} {entities['vehicle'].model or ''} {entities['vehicle'].year or ''}")
                 for dtc in entities["dtc_codes"]:
-                    st.markdown(f"⚠️ **{dtc.code}** — {dtc.description}")
+                    st.markdown(f"**{dtc.code}** — {dtc.description}")
         
         elif classify_btn and not input_text.strip():
             st.warning("Please enter a complaint first")
@@ -629,7 +640,7 @@ def main():
             # Empty state
             st.markdown("""
             <div style="text-align: center; padding: 3rem 1rem; color: #64748b;">
-                <p style="font-size: 3rem; margin-bottom: 1rem;">🚗</p>
+                <p style="font-size: 2rem; margin-bottom: 1rem; color: #6b7280;">—</p>
                 <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">Enter your vehicle problem</p>
                 <p style="font-size: 0.9rem; color: #475569;">Works in <strong>English</strong>, <strong>Hindi</strong>, and <strong>Hinglish</strong></p>
             </div>

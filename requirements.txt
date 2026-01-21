@@ -33,3 +33,5 @@ prometheus-client>=0.17.0
 # UI & Reporting
 audio-recorder-streamlit>=0.0.10
 reportlab>=4.0.0
+python-dotenv
+python-dotenv
