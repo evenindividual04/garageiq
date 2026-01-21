@@ -1,0 +1,202 @@
+[
+    {
+        "id": "test_001",
+        "text": "Bhai gadi start nahi ho rahi, bas tick-tick awaaz aa rahi hai",
+        "language": "hi",
+        "expected_status": "CONFIRMED",
+        "expected_system": "ELECTRICAL",
+        "expected_component": "STARTER_MOTOR",
+        "expected_failure_mode": "SOLENOID_CLICK",
+        "notes": "Classic starter solenoid click - Hindi"
+    },
+    {
+        "id": "test_002",
+        "text": "Car is not starting and produces a ticking sound",
+        "language": "en",
+        "expected_status": "CONFIRMED",
+        "expected_system": "ELECTRICAL",
+        "expected_component": "STARTER_MOTOR",
+        "expected_failure_mode": "SOLENOID_CLICK",
+        "notes": "Same as test_001 in English - cross-language consistency"
+    },
+    {
+        "id": "test_003",
+        "text": "AC thanda nahi kar raha, bahut garmi hai andar",
+        "language": "hi",
+        "expected_status": "CONFIRMED",
+        "expected_system": "HVAC",
+        "expected_component": "COMPRESSOR",
+        "expected_failure_mode": "CLUTCH_FAILURE",
+        "notes": "AC not cooling - Hindi"
+    },
+    {
+        "id": "test_004",
+        "text": "My brakes are making a squealing noise when I stop",
+        "language": "en",
+        "expected_status": "CONFIRMED",
+        "expected_system": "BRAKES",
+        "expected_component": "PADS_ROTORS",
+        "expected_failure_mode": "SQUEALING",
+        "notes": "Clear brake issue"
+    },
+    {
+        "id": "test_005",
+        "text": "Engine is overheating, temperature gauge is in red",
+        "language": "en",
+        "expected_status": "CONFIRMED",
+        "expected_system": "POWERTRAIN",
+        "expected_component": "ENGINE",
+        "expected_failure_mode": "OVERHEATING",
+        "notes": "Overheating - high severity"
+    },
+    {
+        "id": "test_006",
+        "text": "Gaadi ka AC se hawa nahi aa rahi",
+        "language": "hi",
+        "expected_status": "CONFIRMED",
+        "expected_system": "HVAC",
+        "expected_component": "BLOWER_MOTOR",
+        "expected_failure_mode": "NO_AIRFLOW",
+        "notes": "No airflow from HVAC - Hindi"
+    },
+    {
+        "id": "test_007",
+        "text": "Battery terminal par safed powder jama hai",
+        "language": "hi",
+        "expected_status": "CONFIRMED",
+        "expected_system": "ELECTRICAL",
+        "expected_component": "BATTERY",
+        "expected_failure_mode": "CORROSION",
+        "notes": "Battery corrosion in Hindi"
+    },
+    {
+        "id": "test_008",
+        "text": "Transmission is slipping when I accelerate",
+        "language": "en",
+        "expected_status": "CONFIRMED",
+        "expected_system": "POWERTRAIN",
+        "expected_component": "TRANSMISSION",
+        "expected_failure_mode": "SLIPPING",
+        "notes": "Transmission slippage"
+    },
+    {
+        "id": "test_009",
+        "text": "Brake lagane par vibration aa rahi hai",
+        "language": "hi",
+        "expected_status": "CONFIRMED",
+        "expected_system": "BRAKES",
+        "expected_component": "PADS_ROTORS",
+        "expected_failure_mode": "VIBRATION_ON_BRAKE",
+        "notes": "Brake vibration - Hindi"
+    },
+    {
+        "id": "test_010",
+        "text": "Oil leak ho raha hai engine se",
+        "language": "hi",
+        "expected_status": "CONFIRMED",
+        "expected_system": "POWERTRAIN",
+        "expected_component": "ENGINE",
+        "expected_failure_mode": "OIL_LEAK",
+        "notes": "Oil leak in Hindi"
+    },
+    {
+        "id": "test_011",
+        "text": "Awaz aa rahi hai gaadi mein",
+        "language": "hi",
+        "expected_status": "AMBIGUOUS",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Vague complaint - just 'noise' with no specifics"
+    },
+    {
+        "id": "test_012",
+        "text": "Something is wrong with my car",
+        "language": "en",
+        "expected_status": "AMBIGUOUS",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Too vague for classification"
+    },
+    {
+        "id": "test_013",
+        "text": "Gaadi thodi ajeeb chal rahi hai",
+        "language": "hi",
+        "expected_status": "AMBIGUOUS",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Car driving strangely - ambiguous in Hindi"
+    },
+    {
+        "id": "test_014",
+        "text": "Sometimes car makes noise, sometimes it doesn't",
+        "language": "en",
+        "expected_status": "AMBIGUOUS",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Intermittent vague issue"
+    },
+    {
+        "id": "test_015",
+        "text": "Could be the engine or maybe brakes making noise",
+        "language": "en",
+        "expected_status": "AMBIGUOUS",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Customer unsure - multiple candidates"
+    },
+    {
+        "id": "test_016",
+        "text": "What is the weather today?",
+        "language": "en",
+        "expected_status": "OUT_OF_SCOPE",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Completely unrelated query"
+    },
+    {
+        "id": "test_017",
+        "text": "Book a table for dinner please",
+        "language": "en",
+        "expected_status": "OUT_OF_SCOPE",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Restaurant booking - out of domain"
+    },
+    {
+        "id": "test_018",
+        "text": "Mujhe pizza order karna hai",
+        "language": "hi",
+        "expected_status": "OUT_OF_SCOPE",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Food order in Hindi - out of domain"
+    },
+    {
+        "id": "test_019",
+        "text": "",
+        "language": "en",
+        "expected_status": "VALIDATION_ERROR",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Empty input - edge case"
+    },
+    {
+        "id": "test_020",
+        "text": "asdfghjkl qwerty zxcvb",
+        "language": "en",
+        "expected_status": "OUT_OF_SCOPE",
+        "expected_system": null,
+        "expected_component": null,
+        "expected_failure_mode": null,
+        "notes": "Gibberish input - edge case"
+    }
+]

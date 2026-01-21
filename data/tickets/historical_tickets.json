@@ -1,0 +1,406 @@
+[
+    {
+        "id": "TKT-001",
+        "complaint": "Car making squealing noise when braking",
+        "complaint_hi": "Brake lagane par awaaz aa rahi hai",
+        "system": "BRAKES",
+        "component": "PADS_ROTORS",
+        "failure_mode": "SQUEALING",
+        "resolution": "Replaced front brake pads",
+        "parts": [
+            "Brake pads (front)"
+        ],
+        "labor_hours": 1.5
+    },
+    {
+        "id": "TKT-002",
+        "complaint": "Engine overheating on highway",
+        "complaint_hi": "Highway par engine garam ho raha hai",
+        "system": "POWERTRAIN",
+        "component": "ENGINE",
+        "failure_mode": "OVERHEATING",
+        "resolution": "Replaced thermostat and coolant flush",
+        "parts": [
+            "Thermostat",
+            "Coolant"
+        ],
+        "labor_hours": 2.0
+    },
+    {
+        "id": "TKT-003",
+        "complaint": "Car won't start, clicking sound",
+        "complaint_hi": "Gadi start nahi ho rahi, click awaaz",
+        "system": "ELECTRICAL",
+        "component": "STARTER_MOTOR",
+        "failure_mode": "SOLENOID_CLICK",
+        "resolution": "Replaced starter motor",
+        "parts": [
+            "Starter motor"
+        ],
+        "labor_hours": 1.5
+    },
+    {
+        "id": "TKT-004",
+        "complaint": "AC not blowing cold air",
+        "complaint_hi": "AC thanda nahi kar raha",
+        "system": "HVAC",
+        "component": "COMPRESSOR",
+        "failure_mode": "LEAK",
+        "resolution": "Recharged AC, fixed condenser leak",
+        "parts": [
+            "Refrigerant",
+            "O-rings"
+        ],
+        "labor_hours": 2.5
+    },
+    {
+        "id": "TKT-005",
+        "complaint": "Tire puncture, losing air",
+        "complaint_hi": "Tyre puncture ho gaya hai",
+        "system": "TIRES_WHEELS",
+        "component": "TIRES",
+        "failure_mode": "PUNCTURE",
+        "resolution": "Patched tire from inside",
+        "parts": [
+            "Tire patch kit"
+        ],
+        "labor_hours": 0.5
+    },
+    {
+        "id": "TKT-006",
+        "complaint": "Battery died overnight",
+        "complaint_hi": "Raat ko battery khatam ho gayi",
+        "system": "ELECTRICAL",
+        "component": "BATTERY",
+        "failure_mode": "DEAD_CELL",
+        "resolution": "Replaced battery",
+        "parts": [
+            "Battery 12V"
+        ],
+        "labor_hours": 0.5
+    },
+    {
+        "id": "TKT-007",
+        "complaint": "Grinding noise from brakes",
+        "complaint_hi": "Brake se ghisne ki awaaz",
+        "system": "BRAKES",
+        "component": "PADS_ROTORS",
+        "failure_mode": "GRINDING",
+        "resolution": "Replaced pads and rotors",
+        "parts": [
+            "Brake pads",
+            "Rotors"
+        ],
+        "labor_hours": 3.0
+    },
+    {
+        "id": "TKT-008",
+        "complaint": "Car bouncing too much on bumps",
+        "complaint_hi": "Gadi bahut uchhal rahi hai",
+        "system": "SUSPENSION",
+        "component": "SHOCKS_STRUTS",
+        "failure_mode": "BOUNCY_RIDE",
+        "resolution": "Replaced rear struts",
+        "parts": [
+            "Struts (pair)"
+        ],
+        "labor_hours": 3.0
+    },
+    {
+        "id": "TKT-009",
+        "complaint": "Steering wheel vibrating at highway speed",
+        "complaint_hi": "Highway par steering mein vibration",
+        "system": "TIRES_WHEELS",
+        "component": "WHEELS",
+        "failure_mode": "VIBRATION",
+        "resolution": "Balanced all 4 wheels",
+        "parts": [
+            "Wheel weights"
+        ],
+        "labor_hours": 0.5
+    },
+    {
+        "id": "TKT-010",
+        "complaint": "No heat coming from heater",
+        "complaint_hi": "Heater se garmi nahi aa rahi",
+        "system": "HVAC",
+        "component": "HEATER_CORE",
+        "failure_mode": "NO_HEAT",
+        "resolution": "Flushed heater core, replaced thermostat",
+        "parts": [
+            "Thermostat"
+        ],
+        "labor_hours": 2.0
+    },
+    {
+        "id": "TKT-011",
+        "complaint": "Engine misfiring, check engine light on",
+        "complaint_hi": "Engine rough chal raha hai, light on",
+        "system": "POWERTRAIN",
+        "component": "ENGINE",
+        "failure_mode": "MISFIRING",
+        "resolution": "Replaced spark plugs and ignition coil",
+        "parts": [
+            "Spark plugs",
+            "Ignition coil"
+        ],
+        "labor_hours": 1.5
+    },
+    {
+        "id": "TKT-012",
+        "complaint": "Loud exhaust noise from underneath",
+        "complaint_hi": "Neeche se loud awaaz",
+        "system": "EXHAUST",
+        "component": "MUFFLER",
+        "failure_mode": "LOUD_EXHAUST",
+        "resolution": "Replaced rusted muffler",
+        "parts": [
+            "Muffler"
+        ],
+        "labor_hours": 2.0
+    },
+    {
+        "id": "TKT-013",
+        "complaint": "Power steering making whining noise",
+        "complaint_hi": "Steering se awaaz",
+        "system": "STEERING",
+        "component": "POWER_STEERING",
+        "failure_mode": "WHINING_NOISE",
+        "resolution": "Replaced power steering pump",
+        "parts": [
+            "PS Pump",
+            "PS Fluid"
+        ],
+        "labor_hours": 2.5
+    },
+    {
+        "id": "TKT-014",
+        "complaint": "Car stalling at traffic lights",
+        "complaint_hi": "Signal par gadi band ho jaati hai",
+        "system": "POWERTRAIN",
+        "component": "ENGINE",
+        "failure_mode": "STALLING",
+        "resolution": "Cleaned throttle body, replaced IAC valve",
+        "parts": [
+            "IAC valve"
+        ],
+        "labor_hours": 1.5
+    },
+    {
+        "id": "TKT-015",
+        "complaint": "ABS light on dashboard",
+        "complaint_hi": "ABS ki light on hai",
+        "system": "BRAKES",
+        "component": "ABS",
+        "failure_mode": "WARNING_LIGHT",
+        "resolution": "Replaced front left wheel speed sensor",
+        "parts": [
+            "ABS sensor"
+        ],
+        "labor_hours": 1.0
+    },
+    {
+        "id": "TKT-016",
+        "complaint": "Alternator not charging battery",
+        "complaint_hi": "Battery charge nahi ho rahi",
+        "system": "ELECTRICAL",
+        "component": "ALTERNATOR",
+        "failure_mode": "NOT_CHARGING",
+        "resolution": "Replaced alternator",
+        "parts": [
+            "Alternator"
+        ],
+        "labor_hours": 2.0
+    },
+    {
+        "id": "TKT-017",
+        "complaint": "Clunking noise from front suspension",
+        "complaint_hi": "Aage se thak thak awaaz",
+        "system": "SUSPENSION",
+        "component": "BALL_JOINTS",
+        "failure_mode": "CLUNKING",
+        "resolution": "Replaced front lower ball joints",
+        "parts": [
+            "Ball joints"
+        ],
+        "labor_hours": 3.0
+    },
+    {
+        "id": "TKT-018",
+        "complaint": "Rotten egg smell from exhaust",
+        "complaint_hi": "Exhaust se badbu aa rahi hai",
+        "system": "EXHAUST",
+        "component": "CATALYTIC_CONVERTER",
+        "failure_mode": "ROTTEN_EGG_SMELL",
+        "resolution": "Replaced catalytic converter",
+        "parts": [
+            "Catalytic converter"
+        ],
+        "labor_hours": 2.5
+    },
+    {
+        "id": "TKT-019",
+        "complaint": "Transmission slipping when accelerating",
+        "complaint_hi": "Gear slip ho raha hai",
+        "system": "POWERTRAIN",
+        "component": "TRANSMISSION",
+        "failure_mode": "SLIPPING",
+        "resolution": "Transmission fluid change, filter replaced",
+        "parts": [
+            "ATF fluid",
+            "Filter"
+        ],
+        "labor_hours": 2.0
+    },
+    {
+        "id": "TKT-020",
+        "complaint": "TPMS warning light on",
+        "complaint_hi": "Tyre pressure light on",
+        "system": "TIRES_WHEELS",
+        "component": "TPMS",
+        "failure_mode": "WARNING_LIGHT",
+        "resolution": "Replaced TPMS sensor, recalibrated",
+        "parts": [
+            "TPMS sensor"
+        ],
+        "labor_hours": 0.75
+    },
+    {
+        "id": "TKT-021",
+        "complaint": "CNG not switching from petrol",
+        "complaint_hi": "CNG par switch nahi ho raha",
+        "system": "CNG_LPG",
+        "component": "CNG_KIT",
+        "failure_mode": "NOT_SWITCHING",
+        "resolution": "Replaced CNG solenoid valve",
+        "parts": [
+            "CNG solenoid"
+        ],
+        "labor_hours": 1.5,
+        "vehicle": "Maruti Swift"
+    },
+    {
+        "id": "TKT-022",
+        "complaint": "CNG cylinder empties too fast",
+        "complaint_hi": "CNG jaldi khatam ho jata hai",
+        "system": "CNG_LPG",
+        "component": "CNG_KIT",
+        "failure_mode": "REGULATOR_FAILURE",
+        "resolution": "Replaced pressure regulator",
+        "parts": [
+            "CNG regulator"
+        ],
+        "labor_hours": 2.0,
+        "vehicle": "Hyundai i10"
+    },
+    {
+        "id": "TKT-023",
+        "complaint": "Bike self start not working",
+        "complaint_hi": "Self start nahi ho raha",
+        "system": "TWO_WHEELER",
+        "component": "KICK_SELF_START",
+        "failure_mode": "SELF_START_FAILURE",
+        "resolution": "Replaced starter motor",
+        "parts": [
+            "Starter motor"
+        ],
+        "labor_hours": 1.0,
+        "vehicle": "Honda Activa"
+    },
+    {
+        "id": "TKT-024",
+        "complaint": "Chain making noise while riding",
+        "complaint_hi": "Chain se awaaz aa rahi hai",
+        "system": "TWO_WHEELER",
+        "component": "CHAIN_SPROCKET",
+        "failure_mode": "CHAIN_NOISE",
+        "resolution": "Lubricated and adjusted chain tension",
+        "parts": [
+            "Chain lube"
+        ],
+        "labor_hours": 0.5,
+        "vehicle": "Hero Splendor"
+    },
+    {
+        "id": "TKT-025",
+        "complaint": "Clutch very hard to press",
+        "complaint_hi": "Clutch dabane mein bahut zor lagta hai",
+        "system": "TWO_WHEELER",
+        "component": "CLUTCH_LEVER",
+        "failure_mode": "HARD_CLUTCH",
+        "resolution": "Replaced clutch cable and lubricated",
+        "parts": [
+            "Clutch cable"
+        ],
+        "labor_hours": 0.75,
+        "vehicle": "Bajaj Pulsar"
+    },
+    {
+        "id": "TKT-026",
+        "complaint": "Bike not starting in morning cold",
+        "complaint_hi": "Subah thandi mein start nahi hoti",
+        "system": "TWO_WHEELER",
+        "component": "CARBURETOR",
+        "failure_mode": "STARTING_ISSUE",
+        "resolution": "Cleaned carburetor and adjusted choke",
+        "parts": [
+            "Carburetor kit"
+        ],
+        "labor_hours": 1.5,
+        "vehicle": "Royal Enfield Classic"
+    },
+    {
+        "id": "TKT-027",
+        "complaint": "Mileage has dropped significantly",
+        "complaint_hi": "Average bahut kam ho gayi hai",
+        "system": "TWO_WHEELER",
+        "component": "CARBURETOR",
+        "failure_mode": "MILEAGE_DROP",
+        "resolution": "Tuned carburetor, replaced air filter",
+        "parts": [
+            "Air filter"
+        ],
+        "labor_hours": 1.0,
+        "vehicle": "TVS Apache"
+    },
+    {
+        "id": "TKT-028",
+        "complaint": "Swift AC stopped working suddenly",
+        "complaint_hi": "Swift ki AC achanak band ho gayi",
+        "system": "HVAC",
+        "component": "COMPRESSOR",
+        "failure_mode": "CLUTCH_FAILURE",
+        "resolution": "Replaced AC compressor clutch",
+        "parts": [
+            "AC clutch assembly"
+        ],
+        "labor_hours": 3.0,
+        "vehicle": "Maruti Swift"
+    },
+    {
+        "id": "TKT-029",
+        "complaint": "Creta sunroof leaking in rain",
+        "complaint_hi": "Baarish mein sunroof se paani aa raha",
+        "system": "BODY",
+        "component": "SUNROOF",
+        "failure_mode": "LEAK",
+        "resolution": "Cleaned drain tubes, replaced seals",
+        "parts": [
+            "Sunroof seal"
+        ],
+        "labor_hours": 2.0,
+        "vehicle": "Hyundai Creta"
+    },
+    {
+        "id": "TKT-030",
+        "complaint": "Nexon touchscreen frozen",
+        "complaint_hi": "Nexon ki screen hang ho gayi",
+        "system": "ELECTRICAL",
+        "component": "INFOTAINMENT",
+        "failure_mode": "FROZEN",
+        "resolution": "Software update and reset",
+        "parts": [],
+        "labor_hours": 0.5,
+        "vehicle": "Tata Nexon"
+    }
+]

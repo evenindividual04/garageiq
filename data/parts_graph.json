@@ -1,0 +1,178 @@
+{
+    "_meta": {
+        "description": "Parts dependency graph for automotive repairs",
+        "version": "1.0",
+        "note": "When recommending a primary part, always include its dependencies"
+    },
+    "water_pump": {
+        "mandatory": [
+            "water_pump_gasket",
+            "coolant",
+            "thermostat_gasket"
+        ],
+        "recommended": [
+            "thermostat",
+            "hose_clamps"
+        ],
+        "labor_note": "Drain coolant before removal"
+    },
+    "timing_belt": {
+        "mandatory": [
+            "timing_belt_tensioner",
+            "idler_pulley"
+        ],
+        "recommended": [
+            "water_pump",
+            "cam_seals",
+            "crank_seal"
+        ],
+        "labor_note": "Replace water pump if accessible"
+    },
+    "clutch_disc": {
+        "mandatory": [
+            "clutch_pressure_plate",
+            "release_bearing"
+        ],
+        "recommended": [
+            "flywheel_resurface",
+            "pilot_bearing",
+            "clutch_alignment_tool"
+        ],
+        "labor_note": "Inspect flywheel for hot spots"
+    },
+    "brake_pads_front": {
+        "mandatory": [],
+        "recommended": [
+            "brake_rotors_front",
+            "brake_hardware_kit",
+            "brake_fluid"
+        ],
+        "labor_note": "Measure rotor thickness before reuse"
+    },
+    "brake_pads_rear": {
+        "mandatory": [],
+        "recommended": [
+            "brake_rotors_rear",
+            "brake_hardware_kit"
+        ],
+        "labor_note": "Check parking brake adjustment"
+    },
+    "alternator": {
+        "mandatory": [
+            "serpentine_belt"
+        ],
+        "recommended": [
+            "belt_tensioner",
+            "battery_test"
+        ],
+        "labor_note": "Test charging system after install"
+    },
+    "starter_motor": {
+        "mandatory": [],
+        "recommended": [
+            "battery_cables",
+            "battery_test"
+        ],
+        "labor_note": "Check ring gear teeth for damage"
+    },
+    "radiator": {
+        "mandatory": [
+            "coolant",
+            "radiator_hoses"
+        ],
+        "recommended": [
+            "thermostat",
+            "radiator_cap",
+            "hose_clamps"
+        ],
+        "labor_note": "Flush cooling system"
+    },
+    "ac_compressor": {
+        "mandatory": [
+            "ac_receiver_drier",
+            "expansion_valve",
+            "compressor_oil"
+        ],
+        "recommended": [
+            "ac_condenser_flush",
+            "o_rings"
+        ],
+        "labor_note": "Evacuate and recharge system"
+    },
+    "head_gasket": {
+        "mandatory": [
+            "head_bolts",
+            "valve_cover_gasket",
+            "coolant"
+        ],
+        "recommended": [
+            "timing_belt",
+            "water_pump",
+            "thermostat"
+        ],
+        "labor_note": "Check head for warpage"
+    },
+    "fuel_pump": {
+        "mandatory": [
+            "fuel_filter"
+        ],
+        "recommended": [
+            "fuel_pump_strainer",
+            "fuel_tank_seal"
+        ],
+        "labor_note": "Depressurize fuel system before removal"
+    },
+    "shock_absorber_front": {
+        "mandatory": [
+            "strut_mount"
+        ],
+        "recommended": [
+            "strut_boot",
+            "bump_stop"
+        ],
+        "labor_note": "Alignment required after replacement"
+    },
+    "cv_axle": {
+        "mandatory": [
+            "axle_nut"
+        ],
+        "recommended": [
+            "cv_boot_clamps",
+            "transmission_fluid_top_up"
+        ],
+        "labor_note": "Check transmission seal for leaks"
+    },
+    "spark_plugs": {
+        "mandatory": [],
+        "recommended": [
+            "ignition_coils",
+            "spark_plug_wires"
+        ],
+        "labor_note": "Gap plugs to specification"
+    },
+    "oxygen_sensor": {
+        "mandatory": [],
+        "recommended": [
+            "anti_seize_compound"
+        ],
+        "labor_note": "Do not contaminate sensor tip"
+    },
+    "catalytic_converter": {
+        "mandatory": [
+            "exhaust_gaskets",
+            "exhaust_clamps"
+        ],
+        "recommended": [
+            "oxygen_sensors"
+        ],
+        "labor_note": "Check for upstream engine issues first"
+    },
+    "self_start_motor": {
+        "mandatory": [],
+        "recommended": [
+            "battery_check",
+            "starter_relay"
+        ],
+        "labor_note": "Common in two-wheelers - check kickstart gear"
+    }
+}

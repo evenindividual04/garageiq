@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  # Redis for session persistence
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # Ollama for LLM inference
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    # For Mac, remove GPU reservation above
+
+    # Main API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - AMI_USE_OLLAMA=false
+      - AMI_OLLAMA_HOST=http://ollama:11434
+      - AMI_USE_GROQ=true
+      - AMI_GROQ_MODEL=llama-3.1-8b-instant
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - AMI_USE_NLLB=false
+      - AMI_REDIS_URL=redis://redis:6379/0
+      - AMI_ENV=production
+    depends_on:
+      redis:
+        condition: service_healthy
+      ollama:
+        condition: service_started
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Streamlit UI
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  redis_data:
+  ollama_data:
